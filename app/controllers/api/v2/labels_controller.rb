@@ -1,11 +1,11 @@
-class LabelsController < ApplicationController
+class Api::V2::LabelsController < ApplicationController
 
   def create
     note = Note.find_by_id(note_id)
 
     if note
       note.labels.create(name: label_name)
-      render json: note
+      render json: note.to_json(include: :labels)
     else
       render json: :no_content
     end

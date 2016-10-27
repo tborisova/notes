@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  resources :notes do
-    resources :labels, only: [:create, :destroy]
+  
+  namespace :api, path: '' do
+    namespace :v1 do
+      resources :notes do
+        resources :labels, only: [:create, :destroy]
+      end
+    end
+
+    namespace :v2 do
+      resources :notes do
+        resources :labels, only: [:create, :destroy]
+      end
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
